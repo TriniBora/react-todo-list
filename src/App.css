@@ -1,20 +1,40 @@
-body{
-  background-color: darkslateblue;
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.container{
-  background-color: dimgray;
+html {
+  font-size: 16px;
+
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgb(175, 193, 120);
+  background-image: url(img/coffee-list-close-up.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+.todo-container{
+  background-color: hsla(79, 89%, 70%, .8);
   min-height: 500px;
   width: 400px;
-  margin: 40px auto;
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-header h1{
-  color: white;
-}
 
 #todo-form input{
-  background-color: darkcyan;
+  background-color: rgb(32, 106, 93);
   border: 0;
   border-radius: 10px;
   color: rgba(255,255,255,1);
@@ -33,7 +53,7 @@ header h1{
 }
 
 #todo-form button{
-  background-color: darkgoldenrod;
+  background-color: rgb(255, 204, 41);
   border: 0;
   border-radius: 5px;
   color: rgba(255,255,255,1);

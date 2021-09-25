@@ -11,19 +11,16 @@ class Todo extends Component {
     const deleteTodo = this.props.deleteTodo;
 
     return (
-
-      <>
-        <p>{ console.log( description, id ) }</p>
-      <li className="list">
-          { description}
-
+      <li className="todo-item">
+        { description}
         <i>
-            <FontAwesomeIcon
-              className="icon" icon={ [ "fas", "trash" ] }
-              onClick={ () => deleteTodo( id ) } />
+          <FontAwesomeIcon
+            id="trash" icon={ [ "fas", "trash" ] }
+            onClick={ () => deleteTodo( id ) }
+          />
         </i>
       </li>
-    </>)
+    )
   }
 }
 
@@ -34,7 +31,7 @@ class TodoList extends Component {
     const deleteTodo = this.props.deleteTodo;
 
     return (
-      <ul>{ items.map( ( item ) => <Todo key={ item.id } item={ item } deleteTodo={ deleteTodo }/> ) }</ul>
+      <ul className="todo-list">{ items.map( ( item ) => <Todo key={ item.id } item={ item } deleteTodo={ deleteTodo }/> ) }</ul>
     );
   }
 
