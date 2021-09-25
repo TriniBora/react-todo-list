@@ -5,7 +5,6 @@ import TodoForm from "./components/TodoForm";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
-
 library.add( fas );
 
 class App extends Component {
@@ -77,13 +76,3 @@ class App extends Component {
 }
 
 export default App;
-
-{/* <form id="todo-form" onSubmit={ this.addNewTodo}>
-            <input
-              type="text"
-              placeholder="Add your task"
-              value={ this.state.currentTodo.description }
-              onChange={ this.handleChange}
-              />
-            <button type="submit">Add</button>
-          </form> */}
