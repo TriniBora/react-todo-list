@@ -20,20 +20,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
 
 }
 
 #root{
   width: inherit;
-}
-
-.main-section{
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin: 0 auto;
 }
 
 .todo-container{

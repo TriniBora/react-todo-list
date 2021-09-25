@@ -9,7 +9,7 @@ class Header extends Component {
 
                 <h1><i>
                 <FontAwesomeIcon id="check" icon={ [ "fas", "check" ] }/>
-              </i> to do list</h1>
+              </i> Things to do</h1>
             </div>
         );
     }

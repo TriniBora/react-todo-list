@@ -1,22 +1,17 @@
 import React, { Component } from "react";
 import "../css/TodoList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
+import FlipMove from "react-flip-move";
 class Todo extends Component {
 
   render() {
-    const description = this.props.item.description;
-    const id = this.props.item.id;
-    const deleteTodo = this.props.deleteTodo;
-
     return (
       <li className="todo-item">
-        { description}
+        { this.props.item.description}
         <i>
           <FontAwesomeIcon
             id="trash" icon={ [ "fas", "trash" ] }
-            onClick={ () => deleteTodo( id ) }
+            onClick={ () => this.props.deleteTodo( this.props.item.id ) }
           />
         </i>
       </li>
@@ -27,11 +22,16 @@ class Todo extends Component {
 class TodoList extends Component {
 
   render() {
-    const items = this.props.todoList;
-    const deleteTodo = this.props.deleteTodo;
-
     return (
-      <ul className="todo-list">{ items.map( ( item ) => <Todo key={ item.id } item={ item } deleteTodo={ deleteTodo }/> ) }</ul>
+      <ul className="todo-list">
+        <FlipMove duration={ 300 } easing="ease-in-out">
+          { this.props.todoList.map( ( item ) =>
+            <Todo
+              key={ item.id }
+              item={ item }
+              deleteTodo={ this.props.deleteTodo } /> ) }
+        </FlipMove>
+      </ul>
     );
   }
 

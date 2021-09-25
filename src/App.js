@@ -31,19 +31,18 @@ class App extends Component {
     document.getElementById("todo-form").reset();
   }
 
-  handleChange(event) {
+  handleChange( event ) {
     this.setState({
       currentTodo: {
         id: this.state.todoList.length + 1,
         description: event.target.value,
       },
     } );
-
-
   }
 
   addNewTodo(event) {
     event.preventDefault();
+
     const newTodo = this.state.currentTodo;
     if (newTodo.description !== "") {
       const todos = [...this.state.todoList, newTodo];
