@@ -7,6 +7,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+
 library.add(fas);
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
         description: event.target.value,
       },
     } );
+
 
   }
 

@@ -17,10 +17,10 @@ class TodoForm extends Component {
               placeholder="Add your task"
               value={ description }
               onChange={handleChange }
-            />
+              />
             <button type="submit">
               <i>
-                <FontAwesomeIcon className="icon" icon={ [ "fas", "plus" ] }/>
+                <FontAwesomeIcon id="plus" icon={ [ "fas", "plus" ] }/>
               </i>
             </button>
           </form>

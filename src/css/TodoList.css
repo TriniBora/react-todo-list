@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .todo-list{
     list-style: none;
+    padding-left: 0px;
 }
 
 .todo-item{
@@ -7,10 +10,13 @@
     background-color: rgb(245, 134, 52);
     border-radius: 5px;
     height:50px;
-    width: 300px;
+    width: 310px;
     margin: 20px auto;
     padding: 0 10px;
     position: relative;
+    display: flex;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
 
 }
 
