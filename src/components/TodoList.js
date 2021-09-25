@@ -4,17 +4,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 class Todo extends Component {
-  constructor ( props ) {
-    super( props );
-  }
 
   render() {
-    return(
-    <>
+    const description = this.props.item.description;
+    const id = this.props.item.id;
+    const deleteTodo = this.props.deleteTodo;
+
+    return (
+
+      <>
+        <p>{ console.log( description, id ) }</p>
       <li className="list">
-        { this.props.description }
+          { description}
+
         <i>
-          <FontAwesomeIcon className="icon" icon={ [ "fas", "trash" ] } onClick={ () => this.props.deleteTodo( this.props.id ) } />
+            <FontAwesomeIcon
+              className="icon" icon={ [ "fas", "trash" ] }
+              onClick={ () => deleteTodo( id ) } />
         </i>
       </li>
     </>)
@@ -22,14 +28,13 @@ class Todo extends Component {
 }
 
 class TodoList extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const items = this.props.todoList;
+    const deleteTodo = this.props.deleteTodo;
+
     return (
-      <ul>{ items.map( ( item ) => <Todo key={ item.id } description={ item.description } deleteTodo={ this.props.deleteTodo }/> ) }</ul>
+      <ul>{ items.map( ( item ) => <Todo key={ item.id } item={ item } deleteTodo={ deleteTodo }/> ) }</ul>
     );
   }
 
