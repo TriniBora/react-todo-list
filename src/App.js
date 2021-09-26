@@ -27,11 +27,11 @@ class App extends Component {
   }
 
   getMaxId = () => {
-    if ( this.state.todoList.length) {
-      const max = Math.max( ...this.state.todoList.map( ( el ) => el.id ) );
+    if (this.state.todoList.length) {
+      const max = Math.max(...this.state.todoList.map((el) => el.id));
       return max;
     } else {
-      return -1
+      return -1;
     }
   };
 
@@ -49,12 +49,12 @@ class App extends Component {
     document.getElementById("todo-form").reset();
   }
 
-  successAlert = () => {
+  successAlert = (title) => {
     const MySwal = withReactContent(Swal);
     return MySwal.fire({
       position: "center",
       icon: "success",
-      title: "Your task has been submitted!",
+      title: title,
       showConfirmButton: false,
       timer: 1200,
       width: "300px",
@@ -68,21 +68,24 @@ class App extends Component {
     return descriptions;
   };
 
-  // shouldComponentUpdate( nextState) {
+  // preventDuplicates = (descrition) => {
   //   const descriptions = this.getDescriptions();
-  //   console.log(nextState.currentTodo.description.trim().toLowerCase())
-  //   return descriptions.includes( nextState.currentTodo.description.trim().toLowerCase() );
+  //   const description = this.state.currentTodo.description;
+  //   console.log( description );
+  //   console.log( descriptions.includes( description.trim().toLowerCase() ) );
+  //   return descriptions.includes( description.trim().toLowerCase() );
 
   // };
 
   addNewTodo = (event) => {
     event.preventDefault();
     const newTodo = this.state.currentTodo;
+    // const isDuplicate = this.preventDuplicates();
     if (newTodo.description !== "") {
       this.setState({
         todoList: [...this.state.todoList, newTodo],
       });
-      this.successAlert();
+      this.successAlert("Your task has been submitted!");
       this.clearField();
     }
   };
@@ -103,13 +106,7 @@ class App extends Component {
         this.setState({
           todoList: filteredTodos,
         });
-        MySwal.fire({
-          showConfirmButton: false,
-          timer: 1200,
-          width: "300px",
-          title: "Your task has been deleted",
-          icon: "success",
-        });
+        this.successAlert("Your task has been deleted");
       }
     });
   };
