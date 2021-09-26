@@ -16,6 +16,7 @@
   padding: 0 20px;
   margin: 0 10px 0 0;
   font-family: 'Open Sans', sans-serif;
+  box-shadow: 2px 4px 4px hsla(0, 0%, 20%, .4);box-shadow: 2px 4px 4px hsla(0, 0%, 20%, .4);
 }
 
 #todo-form input::placeholder {
@@ -36,6 +37,7 @@
   width: 50px;
   cursor: pointer;
   font-weight: bolder;
+  box-shadow: 2px 4px 4px hsla(0, 0%, 20%, .4);
 }
 
 #todo-form input:hover {
@@ -48,4 +50,5 @@
 
 #plus {
   font-size: larger;
+  color:rgb(32, 106, 93);
 }

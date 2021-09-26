@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     font-family: 'Open Sans', sans-serif;
+    box-shadow: 2px 4px 4px hsla(0, 0%, 20%, .4);
 
 }
 
@@ -33,6 +34,7 @@
 #trash{
     margin: 0 5px;
     font-size: 15px;
+    box-shadow: 2px 4px 4px hsla(0, 0%, 20%, .4);
 }
 
 #trash:hover{
