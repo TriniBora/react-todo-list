@@ -40,7 +40,7 @@ class App extends Component {
     this.setState({
       currentTodo: {
         id: maxId + 1,
-        description: event.target.value,
+        description: event.target.value.trim(),
       },
     });
   };
