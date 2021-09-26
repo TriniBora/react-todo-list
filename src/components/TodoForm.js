@@ -3,6 +3,22 @@ import "../css/TodoForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class TodoForm extends Component {
+
+  // state = {
+  //   todoList: [],
+  //   currentTodo: {
+  //     id: 0,
+  //     description: "",
+  //   },
+  // };
+
+  shouldComponentUpdate( nextProps ) {
+    console.log(this.props.currentTodo.description)
+    console.log(nextProps.value)
+    console.log(this.props.todoList)
+    return this.props.currentTodo.description !== nextProps.value
+  };
+
   render() {
     return (
       <form id="todo-form" onSubmit={this.props.addNewTodo}>

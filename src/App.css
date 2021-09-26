@@ -37,4 +37,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 2px 2px 5px 5px hsla(0, 0%, 20%, .2);
+}
+
+#custom-target {
+  position: relative;
+  width: 600px;
+  height: 300px;
+  border-style: solid;
+  z-index: -1;
+}
+
+.position-absolute {
+  position: absolute;
 }
