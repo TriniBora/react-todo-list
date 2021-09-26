@@ -16,8 +16,8 @@ class App extends Component {
     super(props);
     this.state = {
       todoList: [
-        { id: 1, description: "Task one" },
-        { id: 2, description: "Task two" },
+        // { id: 0, description: "Task one" },
+        // { id: 1, description: "Task two" },
       ],
       currentTodo: {
         id: 0,
@@ -27,8 +27,12 @@ class App extends Component {
   }
 
   getMaxId = () => {
-    const max = Math.max(...this.state.todoList.map((el) => el.id));
-    return max;
+    if ( this.state.todoList.length) {
+      const max = Math.max( ...this.state.todoList.map( ( el ) => el.id ) );
+      return max;
+    } else {
+      return -1
+    }
   };
 
   handleChange = (event) => {
@@ -56,6 +60,20 @@ class App extends Component {
       width: "300px",
     });
   };
+
+  getDescriptions = () => {
+    const descriptions = this.state.todoList.map((el) =>
+      el.description.toLowerCase()
+    );
+    return descriptions;
+  };
+
+  // shouldComponentUpdate( nextState) {
+  //   const descriptions = this.getDescriptions();
+  //   console.log(nextState.currentTodo.description.trim().toLowerCase())
+  //   return descriptions.includes( nextState.currentTodo.description.trim().toLowerCase() );
+
+  // };
 
   addNewTodo = (event) => {
     event.preventDefault();
@@ -95,15 +113,6 @@ class App extends Component {
       }
     });
   };
-
-  // shouldComponentUpdate( nextProps ) {
-  //   console.log(`currentTodo.description ${this.props.currentTodo.description}`)
-  //   console.log(`nextProps.value ${nextProps.value}`)
-  //   console.log( `this.props.todoList ${ this.props.todoList }` )
-
-  //   return (this.props.currentTodo.description !== nextProps.value) ? alert("distintos") :alert("iguales")
-
-  // };
 
   render() {
     this.getMaxId();
