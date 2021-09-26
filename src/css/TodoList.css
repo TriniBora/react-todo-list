@@ -20,6 +20,10 @@
 
 }
 
+.todo-item:hover{
+    transform:scale(1.1)
+}
+
 .todo-item i{
     position: absolute;
     right: 10px;
@@ -29,4 +33,8 @@
 #trash{
     margin: 0 5px;
     font-size: 15px;
+}
+
+#trash:hover{
+    color: rgb(32, 106, 93);
 }

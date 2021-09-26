@@ -30,12 +30,20 @@
 #todo-form button {
   background-color: rgb(255, 204, 41);
   border: 0;
-  border-radius: 10px;
+  border-radius: 50%;
   color: rgba(255, 255, 255, 1);
   height: 50px;
   width: 50px;
   cursor: pointer;
   font-weight: bolder;
+}
+
+#todo-form input:hover {
+  transform: scaleY(1.1);
+}
+
+#todo-form button:hover{
+  transform: scale(1.1);
 }
 
 #plus {
