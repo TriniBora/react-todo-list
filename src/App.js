@@ -7,8 +7,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-
-library.add(fas);
+library.add( fas );
 
 class App extends Component {
   constructor(props) {
@@ -19,11 +18,8 @@ class App extends Component {
         id: 0,
         description: "",
       },
-    };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.addNewTodo = this.addNewTodo.bind(this);
-    this.deleteTodo = this.deleteTodo.bind(this);
+    };
 
   }
 
@@ -31,7 +27,7 @@ class App extends Component {
     document.getElementById("todo-form").reset();
   }
 
-  handleChange( event ) {
+  handleChange =( event ) => {
     this.setState({
       currentTodo: {
         id: this.state.todoList.length + 1,
@@ -40,7 +36,7 @@ class App extends Component {
     } );
   }
 
-  addNewTodo(event) {
+  addNewTodo = (event) => {
     event.preventDefault();
 
     const newTodo = this.state.currentTodo;
@@ -57,7 +53,7 @@ class App extends Component {
     }
   }
 
-  deleteTodo(id) {
+  deleteTodo = (id) => {
     const filteredTodos = this.state.todoList.filter((el) => el.id !== id);
     this.setState({
       todoList: filteredTodos,
@@ -71,11 +67,11 @@ class App extends Component {
         <div className="todo-container">
           <div className="todo-header">
             <TodoForm
+              todoList={this.state.todoList}
               currentTodo={ this.state.currentTodo }
               addNewTodo={ this.addNewTodo }
-              handleChange={ this.handleChange }
-              clearField={ this.clearField}
-            />
+              handleChange={ this.handleChange }/>
+
           </div>
           <div className="todo-body">
             <TodoList

@@ -5,13 +5,16 @@ import FlipMove from "react-flip-move";
 class Todo extends Component {
 
   render() {
+
+    const { item } = this.props;
+
     return (
       <li className="todo-item">
-        { this.props.item.description}
+        { item.description}
         <i>
           <FontAwesomeIcon
             id="trash" icon={ [ "fas", "trash" ] }
-            onClick={ () => this.props.deleteTodo( this.props.item.id ) }
+            onClick={ () => this.props.deleteTodo( item.id ) }
           />
         </i>
       </li>
@@ -19,9 +22,10 @@ class Todo extends Component {
   }
 }
 
-class TodoList extends Component {
+export default class TodoList extends Component {
 
   render() {
+
     return (
       <ul className="todo-list">
         <FlipMove duration={ 300 } easing="ease-in-out">
@@ -36,5 +40,3 @@ class TodoList extends Component {
   }
 
 }
-
-export default TodoList;
