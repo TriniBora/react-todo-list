@@ -68,19 +68,9 @@ class App extends Component {
     return descriptions;
   };
 
-  // preventDuplicates = (descrition) => {
-  //   const descriptions = this.getDescriptions();
-  //   const description = this.state.currentTodo.description;
-  //   console.log( description );
-  //   console.log( descriptions.includes( description.trim().toLowerCase() ) );
-  //   return descriptions.includes( description.trim().toLowerCase() );
-
-  // };
-
-  addNewTodo = (event) => {
+  addNewTodo = ( event ) => {
     event.preventDefault();
     const newTodo = this.state.currentTodo;
-    // const isDuplicate = this.preventDuplicates();
     if (newTodo.description !== "") {
       this.setState({
         todoList: [...this.state.todoList, newTodo],
@@ -119,9 +109,10 @@ class App extends Component {
         <div className="todo-container">
           <div className="todo-header">
             <TodoForm
-              currentTodo={this.state.currentTodo}
-              addNewTodo={this.addNewTodo}
-              handleChange={this.handleChange}
+              currentTodo={ this.state.currentTodo }
+              addNewTodo={ this.addNewTodo }
+              handleChange={ this.handleChange }
+              getDescriptions={ this.getDescriptions}
             />
           </div>
           <div className="todo-body">
