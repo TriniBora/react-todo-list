@@ -15,7 +15,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todoList: [],
+      todoList: [
+        { id: 1, description: "Task one" },
+        { id: 2, description: "Task two" },
+      ],
       currentTodo: {
         id: 0,
         description: "",
@@ -23,37 +26,40 @@ class App extends Component {
     };
   }
 
+  getMaxId = () => {
+    const max = Math.max(...this.state.todoList.map((el) => el.id));
+    return max;
+  };
+
+  handleChange = (event) => {
+    const maxId = this.getMaxId();
+    this.setState({
+      currentTodo: {
+        id: maxId + 1,
+        description: event.target.value,
+      },
+    });
+  };
+
   clearField() {
     document.getElementById("todo-form").reset();
   }
 
   successAlert = () => {
     const MySwal = withReactContent(Swal);
-
     return MySwal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Your task has been submitted!',
+      position: "center",
+      icon: "success",
+      title: "Your task has been submitted!",
       showConfirmButton: false,
       timer: 1200,
-      width: '300px'
-    })
-  };
-
-  handleChange = (event) => {
-    this.setState({
-      currentTodo: {
-        id: this.state.todoList.length + 1,
-        description: event.target.value,
-      },
+      width: "300px",
     });
   };
 
   addNewTodo = (event) => {
     event.preventDefault();
-
     const newTodo = this.state.currentTodo;
-
     if (newTodo.description !== "") {
       this.setState({
         todoList: [...this.state.todoList, newTodo],
@@ -63,52 +69,59 @@ class App extends Component {
     }
   };
 
-  deleteTodo = ( id ) => {
-    const MySwal = withReactContent( Swal );
-
-    MySwal.fire( {
-      title: 'Are you really want your task?',
-      icon: 'warning',
-      width: '300px',
+  deleteTodo = (id) => {
+    const MySwal = withReactContent(Swal);
+    MySwal.fire({
+      title: "Are you really want your task?",
+      icon: "warning",
+      width: "300px",
       showCancelButton: true,
-      confirmButtonColor: 'rgb(32, 106, 93)',
-      cancelButtonColor: 'rgb(245, 134, 52)',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "rgb(32, 106, 93)",
+      cancelButtonColor: "rgb(245, 134, 52)",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      if ( result.isConfirmed ) {
+      if (result.isConfirmed) {
         const filteredTodos = this.state.todoList.filter((el) => el.id !== id);
         this.setState({
           todoList: filteredTodos,
-        } );
-        MySwal.fire( {
+        });
+        MySwal.fire({
           showConfirmButton: false,
           timer: 1200,
-          width: '300px',
-          title: 'Your task has been deleted',
-          icon: 'success',
-        }
-        )
+          width: "300px",
+          title: "Your task has been deleted",
+          icon: "success",
+        });
       }
-    })
-};
+    });
+  };
+
+  // shouldComponentUpdate( nextProps ) {
+  //   console.log(`currentTodo.description ${this.props.currentTodo.description}`)
+  //   console.log(`nextProps.value ${nextProps.value}`)
+  //   console.log( `this.props.todoList ${ this.props.todoList }` )
+
+  //   return (this.props.currentTodo.description !== nextProps.value) ? alert("distintos") :alert("iguales")
+
+  // };
 
   render() {
+    this.getMaxId();
     return (
       <>
         <Header />
         <div className="todo-container">
           <div className="todo-header">
             <TodoForm
-              currentTodo={ this.state.currentTodo }
-              addNewTodo={ this.addNewTodo }
-              handleChange={ this.handleChange }
-
+              currentTodo={this.state.currentTodo}
+              addNewTodo={this.addNewTodo}
+              handleChange={this.handleChange}
             />
           </div>
           <div className="todo-body">
             <TodoList
               todoList={this.state.todoList}
-              deleteTodo={ this.deleteTodo }
+              deleteTodo={this.deleteTodo}
             />
           </div>
         </div>
