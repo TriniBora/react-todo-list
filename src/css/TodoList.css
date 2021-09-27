@@ -18,11 +18,15 @@
     align-items: center;
     font-family: 'Open Sans', sans-serif;
     box-shadow: 2px 4px 4px hsla(0, 0%, 20%, .4);
-
 }
 
 .todo-item:hover{
     transform:scale(1.1)
+}
+
+.todo-item li{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .todo-item i{

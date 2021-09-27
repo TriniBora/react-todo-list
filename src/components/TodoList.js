@@ -7,8 +7,8 @@ class Todo extends Component {
     const { item } = this.props;
 
     return (
-      <li className="todo-item">
-        {item.description}
+      <div className="todo-item">
+        <li>{item.description}</li>
         <i>
           <FontAwesomeIcon
             id="trash"
@@ -16,7 +16,7 @@ class Todo extends Component {
             onClick={() => this.props.deleteTodo(item.id)}
           />
         </i>
-      </li>
+      </div>
     );
   }
 }

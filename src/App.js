@@ -12,8 +12,8 @@ import withReactContent from "sweetalert2-react-content";
 library.add(fas);
 
 class App extends Component {
-  constructor ( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
       todoList: [],
       currentTodo: {
@@ -24,77 +24,83 @@ class App extends Component {
   }
 
   getMaxId = () => {
-    if ( this.state.todoList.length ) {
-      const max = Math.max( ...this.state.todoList.map( ( el ) => el.id ) );
+    if (this.state.todoList.length) {
+      const max = Math.max(...this.state.todoList.map((el) => el.id));
       return max;
     } else {
       return -1;
     }
   };
 
-  handleChange = ( event ) => {
+  handleChange = (event) => {
     const maxId = this.getMaxId();
-    this.setState( {
+    this.setState({
       currentTodo: {
         id: maxId + 1,
         description: event.target.value.trim(),
       },
-    } );
+    });
   };
 
   clearField() {
-    document.getElementById( "todo-form" ).reset();
+    document.getElementById("todo-form").reset();
   }
 
-  showAlert = ( title, icon ) => {
-    const MySwal = withReactContent( Swal );
-    return MySwal.fire( {
+  showAlert = (title, icon) => {
+    const MySwal = withReactContent(Swal);
+    return MySwal.fire({
       position: "center",
       icon: icon,
       title: title,
       showConfirmButton: false,
       timer: 1200,
       width: "300px",
-    } );
+    });
   };
 
   getDescriptions = () => {
-    const descriptions = this.state.todoList.map( ( el ) =>
+    const descriptions = this.state.todoList.map((el) =>
       el.description.toLowerCase()
     );
     return descriptions;
   };
 
-  checkDuplicated = ( description ) => {
+  checkDuplicated = (description) => {
     const descriptions = this.getDescriptions();
     const descriptionToLower = description.trim().toLowerCase();
 
-    return descriptions.includes( descriptionToLower );
+    return descriptions.includes(descriptionToLower);
   };
 
-  addNewTodo = ( event ) => {
+  addNewTodo = (event) => {
     event.preventDefault();
     const newTodo = this.state.currentTodo;
-    const isDuplicated = this.checkDuplicated( newTodo.description );
+    const isDuplicated = this.checkDuplicated(newTodo.description);
 
-    if ( newTodo.description === "" || newTodo.description === /\s/ ) {
-      this.showAlert( "You must write a task!", "warning" );
+    if (newTodo.description === "" || /[ \t\r\n\f]/.test(newTodo.description)) {
+      this.showAlert("You must write a task!", "warning");
     } else {
-      if ( isDuplicated ) {
-        this.showAlert( "This task is already submitted!", "error" )
+      if (isDuplicated) {
+        this.showAlert("This task is already submitted!", "error");
       } else {
-        this.setState( {
-          todoList: [ ...this.state.todoList, newTodo ],
+        this.setState({
+          todoList: [...this.state.todoList, newTodo],
           currentTodo: {
             id: 0,
             description: "",
           },
-        } );
-        this.showAlert( "Your task has been submitted!", "success" );
+        });
+        this.showAlert("Your task has been submitted!", "success");
       }
-    };
+    }
     this.clearField();
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.checkDuplicated(
+      nextState.currentTodo.description.trim().toLowerCase()
+    );
+  }
 
   deleteTodo = (id) => {
     const MySwal = withReactContent(Swal);
@@ -128,7 +134,6 @@ class App extends Component {
               currentTodo={this.state.currentTodo}
               addNewTodo={this.addNewTodo}
               handleChange={this.handleChange}
-              getDescriptions={this.getDescriptions}
             />
           </div>
           <div className="todo-body">
