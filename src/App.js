@@ -77,7 +77,7 @@ class App extends Component {
     const newTodo = this.state.currentTodo;
     const isDuplicated = this.checkDuplicated(newTodo.description);
 
-    if (newTodo.description === "" || /[ \t\r\n\f]/.test(newTodo.description)) {
+    if (newTodo.description === "" || newTodo.description === /\s/) {
       this.showAlert("You must write a task!", "warning");
     } else {
       if (isDuplicated) {
@@ -97,7 +97,7 @@ class App extends Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.checkDuplicated(
+    return !this.checkDuplicated(
       nextState.currentTodo.description.trim().toLowerCase()
     );
   }
