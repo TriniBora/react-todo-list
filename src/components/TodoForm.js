@@ -4,17 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class TodoForm extends Component {
 
-  // shouldComponentUpdate( nextState ) {
-  //   const descriptions = this.props.getDescriptions();
-  //   console.log(descriptions)
-  //   if (descriptions.find(el=> el === nextState.value)) {
-  //     return true;
-  //   }
-  //   // if (this.state.count !== nextState.count) {
-  //   //   return true;
-  //   // }
-  //   return false;
-  // }
+
 
   render() {
     return (
