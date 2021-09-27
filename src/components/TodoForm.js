@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class TodoForm extends Component {
 
-
-
   render() {
     return (
       <form id="todo-form" onSubmit={ this.props.addNewTodo }>

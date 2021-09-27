@@ -96,11 +96,11 @@ class App extends Component {
     this.clearField();
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return !this.checkDuplicated(
-      nextState.currentTodo.description.trim().toLowerCase()
-    );
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return !this.checkDuplicated(
+  //     nextState.currentTodo.description.trim().toLowerCase()
+  //   );
+  // }
 
   deleteTodo = (id) => {
     const MySwal = withReactContent(Swal);
