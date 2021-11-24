@@ -12,9 +12,7 @@ npm install
 
 This project includes dependecies such as:
 - React
-- React Dom
-- React Router v6
-- FlipMove 
+- FlipMove
 - FontAwesome
 
 ### `npm start`
